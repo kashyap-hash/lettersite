@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Letter to You</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Courier New', Courier, monospace;
+            background: #f3e5ab;
+        }
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .photo {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: url('her-photo.png') no-repeat center/cover;
+        }
+        .letter-container {
+            display: none;
+            text-align: center;
+            padding: 50px;
+            font-size: 1.5em;
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            border: 2px solid #8b5a2b;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-screen">
+        <div class="photo" id="photo"></div>
+    </div>
+    
+    <div class="letter-container" id="letter">
+        <h1>My Love Letter</h1>
+        <p>Dear [Her Name],</p>
+        <p>[Your letter will go here]</p>
+        <p>With love,<br>[Your Name]</p>
+    </div>
+    
+    <script>
+        let dx = 2, dy = 2;
+        let x = 50, y = 50;
+        const photo = document.getElementById('photo');
+        const screen = document.querySelector('.loading-screen');
+        
+        function movePhoto() {
+            x += dx;
+            y += dy;
+            
+            if (x <= 0 || x + 100 >= window.innerWidth) dx = -dx;
+            if (y <= 0 || y + 100 >= window.innerHeight) dy = -dy;
+            
+            photo.style.left = x + 'px';
+            photo.style.top = y + 'px';
+            requestAnimationFrame(movePhoto);
+        }
+        movePhoto();
+        
+        setTimeout(() => {
+            screen.style.display = 'none';
+            document.getElementById('letter').style.display = 'block';
+        }, 5000);
+    </script>
+</body>
+</html>
