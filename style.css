@@ -1,20 +1,83 @@
+/* General Page Styling */
 body {
     margin: 0;
     overflow: hidden;
-    background-color: pink; /* Hello Kitty Theme */
+    background: url('hello-kitty-bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Comic Sans MS', cursive;
 }
 
-.loading-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+/* Styling for Loading Page */
+.loading-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffccdd; /* Soft pink */
 }
 
-#bouncing-img {
+/* Bouncing Image */
+.bounce-img {
+    width: 150px; /* Adjust size as needed */
     position: absolute;
-    width: 100px; /* Adjust as needed */
-    height: auto;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+}
+
+/* Styling for Letter Page */
+.letter-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Letter Container */
+.letter-container {
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+}
+
+/* Cute Hello Kitty Stickers */
+.letter-container::before,
+.letter-container::after {
+    content: "";
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: url('hello-kitty-sticker.png') no-repeat center center;
+    background-size: contain;
+}
+
+.letter-container::before {
+    top: -35px;
+    left: -35px;
+}
+
+.letter-container::after {
+    bottom: -35px;
+    right: -35px;
+}
+
+/* Heart Animation */
+.heart {
+    font-size: 26px;
+    color: red;
+    font-weight: bold;
+    animation: heartbeat 1s infinite;
+}
+
+/* Heartbeat Animation */
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Custom Cursor */
+body {
+    cursor: url('hello-kitty-cursor.png'), auto;
 }
